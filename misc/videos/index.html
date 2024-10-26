@@ -22,7 +22,7 @@
       <hr />
       <div>
         <h3>Vídeos roubados do Youtube</h3>
-        <video src="/assets/itKnows.mp4" controls>Seu navegador não suporta a tag vídeo.</video><br />
+        <video src="/assets/itKnows.mp4" id="missile" controls>Seu navegador não suporta a tag vídeo.</video><br />
         <a href="https://youtu.be/bZe5J8SVCYQ?si=_wxs_ck0_bEAAUtA">Orígem do vídeo</a><br />
         <video src="/assets/InLeoWeTrust.mp4" width="960" height="540" id="leo" controls>Seu navegador não suporta a tag vídeo</video><br />
         <a href="https://youtu.be/_f0HL8XxFeg?si=yYOFPXyDi1KtR778">Orígem do vídeo</a>
@@ -37,8 +37,10 @@
     </div>
     <script>
       window.onload = function() {
-          var video = document.getElementById("leo");
-          video.volume = 0.3; // Adjust volume from 0 (muted) to 1 (full volume)
+          var videoLeo = document.getElementById("leo");
+          var videoMissile = document.getElementById("missile");
+          videoLeo.volume = 0.3;
+          videoMissile.volume = 0.3;
       };
     </script>
   </body>

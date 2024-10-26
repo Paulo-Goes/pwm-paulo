@@ -5,6 +5,27 @@ html {
 h1, h2, h3, h4, h5, h6{
     color: #2c3e50;
 }
+h1 {
+    margin-bottom: 20px;
+}
+h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+a:link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #EE0000;
+}
+a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color: #008200;
+}
+a:hover, a:focus, a:active {
+    text-decoration: underline;
+    color: #0000FF;
+}
 .icon-link {
     text-decoration: none;
 }
