@@ -1,0 +1,12 @@
+html {
+    margin: 0;
+	padding: 0;
+}
+.icon-link {
+   text-decoration: none;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+}
