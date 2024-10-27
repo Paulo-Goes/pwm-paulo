@@ -32,6 +32,7 @@
         <h3>Vídeos roubados do Discord</h3>
         <video src="/assets/ski-ba-bop-ba-dop-bop_wacked..webm" controls>Seu navegador não suporta a tag vídeo.</video><br />
         <video src="/assets/coloride.webm" controls>Seu navegador não suporta a tag vídeo.</video><br />
+        <video src="/assets/gura2.webm" id="gura" controls>Seu navegador não suporta a tag vídeo.</video>
       </div>
       <hr />
     </div>
@@ -42,6 +43,17 @@
           videoLeo.volume = 0.3;
           videoMissile.volume = 0.3;
       };
+    </script>
+    <script>
+      const video = document.getElementById("gura");
+
+      video.addEventListener("play", function() {
+      video.removeAttribute("controls"); // Remove controls when video starts playing
+      video.setAttribute("loop", "");
+      setTimeout(() => {
+      alert("You've been trolled!");
+      }, 5000);
+      });
     </script>
   </body>
 </html>
