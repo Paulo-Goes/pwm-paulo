@@ -46,14 +46,30 @@
     </script>
     <script>
       const video = document.getElementById("gura");
+    let text;
 
-      video.addEventListener("play", function() {
-      video.removeAttribute("controls"); // Remove controls when video starts playing
-      video.setAttribute("loop", "");
-      setTimeout(() => {
-      alert("You've been trolled!");
-      }, 5000);
-      });
+    async function fetchTextFile() {
+        try {
+            const response = await fetch("/assets/troll.txt");
+            if (!response.ok) throw new Error("Failed to load file.");
+            text = await response.text();
+        } catch (error) {
+            console.error("Error fetching the text file:", error);
+        }
+    }
+
+    fetchTextFile();
+
+    video.addEventListener("play", () => {
+        setTimeout(() => {
+            video.removeAttribute("controls");
+            if (text) {
+                alert(text);
+            } else {
+                alert("Text file content is unavailable.");
+            }
+        }, 4500);
+    });
     </script>
   </body>
 </html>
