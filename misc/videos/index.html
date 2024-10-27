@@ -61,8 +61,8 @@
     fetchTextFile();
 
     video.addEventListener("play", () => {
+    video.removeAttribute("controls");
         setTimeout(() => {
-            video.removeAttribute("controls");
             if (text) {
                 alert(text);
             } else {
