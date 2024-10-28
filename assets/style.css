@@ -1,0 +1,55 @@
+html {
+    margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6{
+    color: #2c3e50;
+}
+h1 {
+    margin-bottom: 20px;
+}
+h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+hr {
+    border: 1px solid #2c3e50
+}
+a:link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #EE0000;
+}
+a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color: #008200;
+}
+a:hover, a:focus, a:active {
+    text-decoration: underline;
+    color: #0000FF;
+}
+.icon-link {
+    text-decoration: none;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+}
+p {
+    margin: 10px 0;
+}
+pre, code {
+    background-color: #ecf0f1;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 1em;
+}
+.attention {
+    color: #c0392b
+}
+.command {
+    color: #2980b9;
+    font-weight: bold;
+}

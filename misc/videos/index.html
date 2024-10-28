@@ -3,19 +3,74 @@
   <head>
     <meta charset="UTF-8">
     <title>Vídeos interessantes</title>
+    <link rel="stylesheet" media="screen" href="/assets/style.css">
   </head>
   <body>
-    <hr />
-    <a href="/">Ir para a página principal</a><br />
-    <a href="..">Voltar para Miscellaneous</a>
-    <hr />
-    <h1>Vídeos interessantes</h1>
-    <h3>Vídeos roubados do Discord</h3>
-    <video src="/assets/ski-ba-bop-ba-dop-bop_wacked..webm" controls>Seu navegador não suporta a tag vídeo.</video>
-    <br /><br /><br /><br /><br /><br /><br /><br />
-    <p>Esse espaçamento está aqui porque a página é pequena, e na hora que o vídeo começa a "dançar" ocorre um problema que o navegador não fica ancorado a parte de báixo da página</p>
-    <br /><br /><br /><br /><br /><br /><br /><br />
-    <video src="/assets/coloride.webm" controls>Seu navegador não suporta a tag vídeo.</video>
-    <hr />
+    <div>
+      <hr />
+      <a href="/">Ir para a página principal</a><br />
+      <a href="..">Voltar para Miscellaneous</a><br />
+      <hr />
+    </div>
+
+    <div>
+      <h1>Vídeos interessantes</h1>
+      <h2><strong class="attention">ATENÇÃO!!!</strong></h2>
+      <p>Vídeos com volume alto tiveram seus volumes reduzidos automaticamente,
+         aumente o volume ao seu próprio risco!
+      </p>
+      <hr />
+      <div>
+        <h3>Vídeos roubados do Youtube</h3>
+        <video src="/assets/itKnows.mp4" id="missile" controls>Seu navegador não suporta a tag vídeo.</video><br />
+        <a href="https://youtu.be/bZe5J8SVCYQ?si=_wxs_ck0_bEAAUtA">Orígem do vídeo</a><br />
+        <video src="/assets/InLeoWeTrust.mp4" width="960" height="540" id="leo" controls>Seu navegador não suporta a tag vídeo</video><br />
+        <a href="https://youtu.be/_f0HL8XxFeg?si=yYOFPXyDi1KtR778">Orígem do vídeo</a>
+      </div>
+      <hr />
+      <div>
+        <h3>Vídeos roubados do Discord</h3>
+        <video src="/assets/ski-ba-bop-ba-dop-bop_wacked..webm" controls>Seu navegador não suporta a tag vídeo.</video><br />
+        <video src="/assets/coloride.webm" controls>Seu navegador não suporta a tag vídeo.</video><br />
+        <video src="/assets/gura2.webm" id="gura" controls>Seu navegador não suporta a tag vídeo.</video>
+      </div>
+      <hr />
+    </div>
+    <script>
+      window.onload = function() {
+          var videoLeo = document.getElementById("leo");
+          var videoMissile = document.getElementById("missile");
+          videoLeo.volume = 0.3;
+          videoMissile.volume = 0.3;
+      };
+    </script>
+    <script>
+      const video = document.getElementById("gura");
+      let text;
+
+      async function fetchTextFile() {
+          try {
+              const response = await fetch("/assets/troll.txt");
+              if (!response.ok) throw new Error("Failed to load file.");
+              text = await response.text();
+          } catch (error) {
+              console.error("Error fetching the text file:", error);
+          }
+      }
+
+      fetchTextFile();
+
+      video.addEventListener("play", () => {
+      video.removeAttribute("controls");
+      video.loop = true;
+          setTimeout(() => {
+              if (text) {
+                  alert(text);
+              } else {
+                  alert("Text file content is unavailable.");
+              }
+          }, 4500);
+      });
+    </script>
   </body>
 </html>
