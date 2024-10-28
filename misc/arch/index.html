@@ -4,46 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arch Linux Installation Guide</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-        h2 {
-            margin-top: 30px;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #2c3e50;
-        }
-        p {
-            margin: 10px 0;
-        }
-        strong {
-            color: #c0392b;
-        }
-        code {
-            background-color: #ecf0f1;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-size: 1em;
-        }
-        pre {
-            background-color: #ecf0f1;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .command {
-            color: #2980b9;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" media="screen" href="/assets/style.css">
 </head>
 <body>
     <div>
@@ -53,137 +14,166 @@
         <hr />
     </div>
 
-    <h1>Arch Linux Installation Guide</h1>
-    <h2>DISCLAIMER</h2>
-    <p>This guide was made to be used in an Oracle VM Virtual Box. Do <strong>NOT</strong> use it in a live system as unexpected results may occur.</p>
-    <p><strong>You have been warned!</strong></p>
+    <div>
+        <h1>Arch Linux Installation Guide</h1>
+        <h2>DISCLAIMER</h2><hr />
+        <p>This guide was made to be used in an Oracle VM Virtual Box. Do <strong class="attention">NOT</strong> use it in a live system as unexpected results may occur.</p>
+        <p><strong class="attention">You have been warned!</strong></p>
+    </div>
 
-    <h2>CLI Shortcuts</h2>
-    <p><span class="command">TAB</span> (Auto-complete commands)</p>
-    <p><span class="command">CTRL + L</span> (Clear the terminal screen)</p>
+    <div>
+        <h2>CLI Shortcuts</h2><hr />
+        <p><span class="command">TAB</span> (Auto-complete commands)</p>
+        <p><span class="command">CTRL + L</span> (Clear the terminal screen)</p>
+    </div>
 
-    <h2>In case you get locked out of your login</h2>
-    <p>Enter as root and run</p>
-    <p><span class="command">faillock --user [username here] --reset</span> (Resets the password attempts and the 10-min cooldown)</p>
+    <div>
+        <h2>In case you get locked out of your login</h2><hr />
+        <p>Enter as root and run</p>
+        <p><span class="command">faillock --user [username here] --reset</span> (Resets the password attempts and the 10-min cooldown)</p>
+    </div>
 
-    <h2>In case you change the hardware of the machine (vm exports included)</h2>
-    <p>Boot to a live GNU/Linux distribution, mount your file system and generate a new fstab: </p>
-    <p>Mount your file system</p>
-    <p><span class="command">mount /dev/[disk]</span></p>
-    <p>Generate new fstab file</p>
-    <p><span class="command">genfstab /mnt > /etc/fstab</span></p>
-    <p>Arch-chroot into the system</p>
-    <p><span class="command">arch-chroot /mnt</span></p>
-    <p>Reinstall grub and make a new initcpio file</p>
-    <p><span class="command">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</span> (Install GRUB bootloader)</p>
-    <p><span class="command">grub-mkconfig -o /boot/grub/grub.cfg</span> (Generate GRUB configuration)</p>
-    <p><span class="command">mkinitcpio -p linux</span></p>
-    <p>Exit arch-chroot, umount the file system and reboot</p>
+    <div>
+        <h2>In case you change the hardware of the machine (vm exports included)</h2><hr />
+        <p>Boot to a live GNU/Linux distribution, mount your file system and generate a new fstab: </p>
+        <p>Mount your file system</p>
+        <p><span class="command">mount /dev/[disk]</span></p>
+        <p>Generate new fstab file</p>
+        <p><span class="command">genfstab /mnt > /etc/fstab</span></p>
+        <p>Arch-chroot into the system</p>
+        <p><span class="command">arch-chroot /mnt</span></p>
+        <p>Reinstall grub and make a new initcpio file</p>
+        <p><span class="command">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</span> (Install GRUB bootloader)</p>
+        <p><span class="command">grub-mkconfig -o /boot/grub/grub.cfg</span> (Generate GRUB configuration)</p>
+        <p><span class="command">mkinitcpio -p linux</span></p>
+        <p>Exit arch-chroot, umount the file system and reboot</p>
+    </div>
 
-    <h2>Keyboard Layout</h2>
-    <p><span class="command">localectl list-keymaps</span> (List available keyboard layouts)</p>
-    <p><span class="command">loadkeys [keymap]</span> (Load a specific keyboard layout)</p>
+    <div>
+        <h2>Keyboard Layout</h2><hr />
+        <p><span class="command">localectl list-keymaps</span> (List available keyboard layouts)</p>
+        <p><span class="command">loadkeys [keymap]</span> (Load a specific keyboard layout)</p>
+    </div>
 
-    <h2>Network Configuration</h2>
-    <p><em>Wireless setup to be developed; Ethernet automatically connects.</em></p>
+    <div>
+        <h2>Network Configuration</h2><hr />
+        <p><em>Wireless setup to be developed; Ethernet automatically connects.</em></p>
+    </div>
 
-    <h2>Time and Date Configuration</h2>
-    <p><span class="command">timedatectl</span> (View current time and date settings)</p>
-    <p><span class="command">timedatectl set-ntp true</span> (Enable network time synchronization)</p>
-    <p><span class="command">timedatectl list-timezones</span> (List all timezones)</p>
-    <p><span class="command">timedatectl set-timezone [timezone]</span> (Set the system timezone)</p>
+    <div>
+    <h2>Time and Date Configuration</h2><hr />
+        <p><span class="command">timedatectl</span> (View current time and date settings)</p>
+        <p><span class="command">timedatectl set-ntp true</span> (Enable network time synchronization)</p>
+        <p><span class="command">timedatectl list-timezones</span> (List all timezones)</p>
+        <p><span class="command">timedatectl set-timezone [timezone]</span> (Set the system timezone)</p>
+    </div>
 
-    <h2>Partitioning the Disk</h2>
-    <p><span class="command">lsblk</span> (List system blocks currently available)</p>
-    <p><span class="command">cfdisk /dev/[disk]</span> (Disk partitioning tool)</p>
-    <p>Partition setup:</p>
-    <p>Considering a 64G drive:</p>
-    <strong>Boot Partition:</strong>
-    <p>Select Free Space &gt; [New] &gt; Size: 1G</p>
-    <pre><code>/dev/[disk]1 1G
-Free space 63G</code></pre>
-    <strong>Swap Partition:</strong>
-    <p>Select Free Space &gt; [New] &gt; Size: 4G (Minimum recommended. Adjust based on your needs.)</p>
-    <pre><code>/dev/[disk]1 1G
+    <div>
+        <h2>Partitioning the Disk</h2><hr />
+        <p><span class="command">lsblk</span> (List system blocks currently available)</p>
+        <p><span class="command">cfdisk /dev/[disk]</span> (Disk partitioning tool)</p>
+        <p>Partition setup:</p>
+        <p>Considering a 64G drive:</p>
+        <strong class="attention">Boot Partition:</strong>
+        <p>Select Free Space &gt; [New] &gt; Size: 1G</p>
+<pre>
+/dev/[disk]1 1G
+Free space 63G</pre>
+        <strong class="attention">Swap Partition:</strong>
+        <p>Select Free Space &gt; [New] &gt; Size: 4G (Minimum recommended. Adjust based on your needs.)</p>
+<pre>
+/dev/[disk]1 1G
 /dev/[disk]2 4G
-Free space 59G</code></pre>
-    <strong>Root Partition:</strong>
-    <p>Select Free Space &gt; [New] &gt; Use Remaining Space</p>
-    <pre><code>/dev/[disk]1 1G
+Free space 59G</pre>
+        <strong class="attention">Root Partition:</strong>
+        <p>Select Free Space &gt; [New] &gt; Use Remaining Space</p>
+<pre>
+/dev/[disk]1 1G
 /dev/[disk]2 4G
-/dev/[disk]3 59G</code></pre>
-    <p><strong>Warning:</strong> Pressing [Write] will format your disk. Confirm with <span class="command">yes</span> and press [Quit].</p>
+/dev/[disk]3 59G</pre>
+        <p><strong class="attention">Warning:</strong> Pressing [Write] will format your disk. Confirm with <span class="command">yes</span> and press [Quit].</p>
+    </div>
 
-    <h2>Formatting the Partitions</h2>
-    <p><span class="command">mkfs.fat -F32 /dev/[disk]1</span> (Format Boot partition as FAT32)</p>
-    <p><span class="command">mkfs.ext4 /dev/[disk]3</span> (Format Root partition as ext4)</p>
-    <p><span class="command">mkswap /dev/[disk]2</span> (Format Swap partition)</p>
-    <p><span class="command">swapon /dev/[disk]2</span> (Enable Swap)</p>
+    <div>
+    <h2>Formatting the Partitions</h2><hr />
+        <p><span class="command">mkfs.fat -F32 /dev/[disk]1</span> (Format Boot partition as FAT32)</p>
+        <p><span class="command">mkfs.ext4 /dev/[disk]3</span> (Format Root partition as ext4)</p>
+        <p><span class="command">mkswap /dev/[disk]2</span> (Format Swap partition)</p>
+        <p><span class="command">swapon /dev/[disk]2</span> (Enable Swap)</p>
+    </div>
 
-    <h2>Installation</h2>
-    <p><span class="command">mount /dev/[disk]3 /mnt</span> (Mount Root partition to <code>/mnt</code>)</p>
-    <p><span class="command">mkdir /mnt/boot</span> (Create Boot directory)</p>
-    <p><span class="command">mount /dev/[disk]1 /mnt/boot</span> (Mount Boot partition to <code>/mnt/boot</code>)</p>
-    <p><span class="command">pacstrap /mnt base linux linux-firmware dosfstools nano networkmanager sof-firmware base-devel grub efibootmgr</span> (Install base packages)</p>
-    <p><span class="command">genfstab /mnt > /mnt/etc/fstab</span> (Generate filesystem table)</p>
+    <div>
+    <h2>Installation</h2><hr />
+        <p><span class="command">mount /dev/[disk]3 /mnt</span> (Mount Root partition to <code>/mnt</code>)</p>
+        <p><span class="command">mkdir /mnt/boot</span> (Create Boot directory)</p>
+        <p><span class="command">mount /dev/[disk]1 /mnt/boot</span> (Mount Boot partition to <code>/mnt/boot</code>)</p>
+        <p><span class="command">pacstrap /mnt base linux linux-firmware dosfstools nano networkmanager sof-firmware base-devel grub efibootmgr</span> (Install base packages)</p>
+        <p><span class="command">genfstab /mnt > /mnt/etc/fstab</span> (Generate filesystem table)</p>
+    </div>
 
-    <h2>Post-Install Configuration</h2>
-    <p><span class="command">arch-chroot /mnt</span> (Chroot into the new system)</p>
-    <strong>Set Timezone:</strong>
-    <p><span class="command">ln -sf /usr/share/zoneinfo/[Your/Timezone] /etc/localtime</span></p>
-    <p><span class="command">hwclock --systohc</span></p>
+    <div>
+        <h2>Post-Install Configuration</h2><hr />
+        <p><span class="command">arch-chroot /mnt</span> (Chroot into the new system)</p>
+        <strong class="attention">Set Timezone:</strong>
+        <p><span class="command">ln -sf /usr/share/zoneinfo/[Your/Timezone] /etc/localtime</span></p>
+        <p><span class="command">hwclock --systohc</span></p>
 
-    <strong>Locale Settings:</strong>
-    <p><span class="command">nano /etc/locale.gen</span> (Uncomment the desired locale, e.g., <code>en_US.UTF-8 UTF-8</code>)</p>
-    <p><span class="command">locale-gen</span></p>
-    <p><span class="command">nano /etc/locale.conf</span> (Set the locale)</p>
-    <pre><code>LANG=en_US.UTF-8</code></pre>
+        <strong class="attention">Locale Settings:</strong>
+        <p><span class="command">nano /etc/locale.gen</span> (Uncomment the desired locale, e.g., <code>en_US.UTF-8 UTF-8</code>)</p>
+        <p><span class="command">locale-gen</span></p>
+        <p><span class="command">nano /etc/locale.conf</span> (Set the locale)</p>
+        <pre>LANG=en_US.UTF-8</pre>
 
-    <strong>Keyboard Layout:</strong>
-    <p><span class="command">nano /etc/vconsole.conf</span></p>
-    <pre><code>KEYMAP=br-abnt2</code></pre>
+        <strong class="attention">Keyboard Layout:</strong>
+        <p><span class="command">nano /etc/vconsole.conf</span></p>
+        <pre>KEYMAP=br-abnt2</pre>
 
-    <strong>Hostname and Root Password:</strong>
-    <p><span class="command">nano /etc/hostname</span> (Set the hostname)</p>
-    <p><span class="command">passwd</span> (Set root password)</p>
+        <strong class="attention">Hostname and Root Password:</strong>
+        <p><span class="command">nano /etc/hostname</span> (Set the hostname)</p>
+        <p><span class="command">passwd</span> (Set root password)</p>
 
-    <strong>Create User:</strong>
-    <p><span class="command">useradd -mG wheel -s /bin/bash [user]</span> (Create a new user named <code>paul</code>)</p>
-    <p><span class="command">passwd [user]</span> (Set password for <code>[user]</code>)</p>
+        <strong class="attention">Create User:</strong>
+        <p><span class="command">useradd -mG wheel -s /bin/bash [user]</span> (Create a new <code>[user]</code>)</p>
+        <p><span class="command">passwd [user]</span> (Set password for <code>[user]</code>)</p>
 
-    <strong>Configure Sudo:</strong>
-    <p><span class="command">EDITOR=nano visudo</span> (Edit sudoers file to grant <code>wheel</code> group sudo privileges)</p>
+        <strong class="attention">Configure Sudo:</strong>
+        <p><span class="command">EDITOR=nano visudo</span> (Edit sudoers file to grant <code>wheel</code> group sudo privileges)</p>
 
-    <strong>Update System and Install Bootloader:</strong>
-    <p><span class="command">systemctl enable NetworkManager</span> (Enable NetworkManager service)</p>
-    <p><span class="command">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</span> (Install GRUB bootloader)</p>
-    <p><span class="command">grub-mkconfig -o /boot/grub/grub.cfg</span> (Generate GRUB configuration)</p>
+        <strong class="attention">Update System and Install Bootloader:</strong>
+        <p><span class="command">systemctl enable NetworkManager</span> (Enable NetworkManager service)</p>
+        <p><span class="command">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</span> (Install GRUB bootloader)</p>
+        <p><span class="command">grub-mkconfig -o /boot/grub/grub.cfg</span> (Generate GRUB configuration)</p>
 
-    <strong>Exit and Reboot:</strong>
-    <p><span class="command">exit</span></p>
-    <p><span class="command">umount -a</span></p>
-    <p><span class="command">reboot</span></p>
+        <strong class="attention">Exit and Reboot:</strong>
+        <p><span class="command">exit</span></p>
+        <p><span class="command">umount -a</span></p>
+        <p><span class="command">reboot</span></p>
+    </div>
 
-    <h2>Post-Reboot Setup</h2>
-    <strong>Install Desktop Environment and Applications:</strong>
-    <p><span class="command">sudo pacman -S plasma sddm xterm firefox git htop clang jdk-openjdk python intellij-idea-community-edition pycharm-community-edition vlc gimp libreoffice-fresh wireshark-qt neofetch mtr netcat dolphin pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack wireplumber rtkit openssh sl cmatrix nyancat bash-completion gnome-mines aisleriot</span></p>
-    <p><span class="command">ENTER</span> till start</p>
+    <div>
+        <h2>Post-Reboot Setup</h2><hr />
+        <strong class="attention">Install Desktop Environment and Applications:</strong>
+        <p><span class="command">sudo pacman -S plasma sddm xterm firefox git htop clang jdk-openjdk python intellij-idea-community-edition pycharm-community-edition vlc gimp libreoffice-fresh wireshark-qt neofetch mtr netcat dolphin pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack wireplumber rtkit openssh sl cmatrix nyancat bash-completion gnome-mines aisleriot</span></p>
+        <p><span class="command">ENTER</span> till start</p>
 
-    <strong>Configure Xterm:</strong>
-    <p><span class="command">nano ~/.Xresources</span></p>
-    <pre><code>XTerm*background: black
+        <strong class="attention">Configure Xterm:</strong>
+        <p><span class="command">nano ~/.Xresources</span></p>
+<pre>
+XTerm*background: black
 XTerm*foreground: white
-XTerm*font: xft:DejaVu Sans Mono:size=12</code></pre>
-    <p><span class="command">echo "xrdb -merge ~/.Xresources" >> ~/.bashrc</span></p>
-    <p><span class="command">source ~/.bashrc</span></p>
+XTerm*font: xft:DejaVu Sans Mono:size=12</pre>
+        <p><span class="command">echo "xrdb -merge ~/.Xresources" >> ~/.bashrc</span></p>
+        <p><span class="command">source ~/.bashrc</span></p>
 
-    <strong>Configure SDDM Autologin:</strong>
-    <p><span class="command">sudo nano /etc/profile.d/neofetch.sh</span></p>
-    <pre><code>#!/bin/bash
-neofetch</code></pre>
-    <p><span class="command">sudo chmod +x /etc/profile.d/neofetch.sh</span></p>
-    <p><span class="command">sudo nano /etc/systemd/system/disable-sddm.service</span></p>
-    <pre><code>[Unit]
+        <strong class="attention">Configure SDDM Autologin:</strong>
+        <p><span class="command">sudo nano /etc/profile.d/neofetch.sh</span></p>
+<pre>
+#!/bin/bash
+neofetch</pre>
+        <p><span class="command">sudo chmod +x /etc/profile.d/neofetch.sh</span></p>
+        <p><span class="command">sudo nano /etc/systemd/system/disable-sddm.service</span></p>
+<pre>
+[Unit]
 Description=Disable SDDM on shutdown
 Before=shutdown.target reboot.target halt.target
 
@@ -194,18 +184,20 @@ ExecStop=/usr/bin/systemctl disable sddm
 RemainAfterExit=true
 
 [Install]
-WantedBy=shutdown.target reboot.target halt.target</code></pre>
-    <p><span class="command">sudo systemctl daemon-reload</span></p>
-    <p><span class="command">sudo systemctl enable disable-sddm.service</span></p>
+WantedBy=shutdown.target reboot.target halt.target</pre>
+        <p><span class="command">sudo systemctl daemon-reload</span></p>
+        <p><span class="command">sudo systemctl enable disable-sddm.service</span></p>
 
-    <strong>Configure SDDM Autologin:</strong>
-    <p><span class="command">sudo nano /etc/sddm.conf</span></p>
-    <pre><code>[Autologin]
+        <strong class="attention">Configure SDDM Autologin:</strong>
+        <p><span class="command">sudo nano /etc/sddm.conf</span></p>
+<pre>
+[Autologin]
 User=[user]
-Session=plasma</code></pre>
+Session=plasma</pre>
 
-    <p><span class="command">reboot</span></p>
-    <p><span class="command">sudo systemctl start sddm</span></p>
-    <hr />
+        <p><span class="command">reboot</span></p>
+        <p><span class="command">sudo systemctl start sddm</span></p>
+        <hr />
+    </div>
 </body>
 </html>
