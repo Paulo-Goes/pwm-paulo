@@ -2,6 +2,11 @@ html {
     margin: 0;
 	padding: 0;
 }
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+}
 h1, h2, h3, h4, h5, h6{
     color: #2c3e50;
 }
@@ -29,13 +34,30 @@ a:hover, a:focus, a:active {
     text-decoration: underline;
     color: #0000FF;
 }
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid #FF0000;
+}
+
+tr {
+    color: black;
+    text-align: center;
+}
+td {
+    border: 3px solid #000;
+}
+tr.dark {
+    color: white;
+    text-align: center;
+}
+td.dark {
+    border: 3px solid #fff;
+}
 .icon-link {
     text-decoration: none;
-}
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 20px;
 }
 p {
     margin: 10px 0;
@@ -52,4 +74,10 @@ pre, code {
 .command {
     color: #2980b9;
     font-weight: bold;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
