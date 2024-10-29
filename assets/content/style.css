@@ -11,13 +11,13 @@ body {
     color: #000000;
 }
 nav {
-    position: fixed; /* Keeps the navigation fixed at the top */
+    position: fixed;
     top: 0;
     background-color: white;
     width: 100%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-* {
+*:not(a) {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -29,6 +29,9 @@ h1 {
 h2 {
     margin-top: 30px;
     margin-bottom: 10px;
+}
+h3 {
+    font-size: 30px;
 }
 button {
     background-color: #FFFFFF;
@@ -66,9 +69,6 @@ tr {
 td {
     border: 3px solid #000;
 }
-.icon-link {
-    text-decoration: none;
-}
 p {
     margin: 10px 0;
 }
@@ -78,6 +78,9 @@ pre, code {
     border-radius: 3px;
     font-size: 1em;
 }
+a.icon-link {
+    text-decoration: none;
+}
 .attention {
     color: #c0392b
 }
@@ -85,9 +88,16 @@ pre, code {
     color: #2980b9;
     font-weight: bold;
 }
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+div.center {
+    margin: auto;
+    width: 50%;
+}
+a.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.space {
+    margin-left: 20px;
 }
