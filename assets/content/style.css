@@ -1,8 +1,26 @@
 html {
     margin: 0;
 	padding: 0;
+	scroll-behavior: smooth;
 }
-h1, h2, h3, h4, h5, h6{
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+nav {
+    position: fixed; /* Keeps the navigation fixed at the top */
+    top: 0;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+* {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+h1, h2, h3, h4, h5, h6 {
     color: #2c3e50;
 }
 h1 {
@@ -11,6 +29,11 @@ h1 {
 h2 {
     margin-top: 30px;
     margin-bottom: 10px;
+}
+button {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 2px solid #000000;
 }
 hr {
     border: 1px solid #2c3e50
@@ -29,13 +52,22 @@ a:hover, a:focus, a:active {
     text-decoration: underline;
     color: #0000FF;
 }
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border-collapse: collapse;
+    border: 5px solid #000000;
+}
+tr {
+    color: black;
+    text-align: center;
+}
+td {
+    border: 3px solid #000;
+}
 .icon-link {
     text-decoration: none;
-}
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 20px;
 }
 p {
     margin: 10px 0;
@@ -52,4 +84,10 @@ pre, code {
 .command {
     color: #2980b9;
     font-weight: bold;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
