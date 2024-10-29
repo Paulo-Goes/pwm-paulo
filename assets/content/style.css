@@ -78,7 +78,7 @@ pre, code {
     border-radius: 3px;
     font-size: 1em;
 }
-.icon-link {
+a.icon-link {
     text-decoration: none;
 }
 .attention {
