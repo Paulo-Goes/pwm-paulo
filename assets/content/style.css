@@ -97,7 +97,6 @@ pre, code {
     margin-left: 20px;
 }
 a.button-link {
-    display: block;
+    display: inline-block;
     text-decoration: none;
-    background-color: transparent;
 }
