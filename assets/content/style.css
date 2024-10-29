@@ -1,6 +1,7 @@
 html {
     margin: 0;
 	padding: 0;
+	scroll-behavior: smooth;
 }
 body {
     font-family: Arial, sans-serif;
@@ -8,6 +9,13 @@ body {
     margin: 20px;
     background-color: #FFFFFF;
     color: #000000;
+}
+nav {
+    position: fixed; /* Keeps the navigation fixed at the top */
+    top: 0;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 * {
     transition: background-color 0.5s ease, color 0.5s ease;
