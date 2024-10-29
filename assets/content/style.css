@@ -88,15 +88,16 @@ pre, code {
     color: #2980b9;
     font-weight: bold;
 }
-.center {
+div.center {
+    margin: auto;
+    width: 50%;
+}
+a.center {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 .space {
     margin-left: 20px;
-}
-a.button-link {
-    display: inline-block;
-    text-decoration: none;
 }
