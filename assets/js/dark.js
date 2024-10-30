@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function enableRainbowMode() {
         if (pressCount <= 5) {
             document.body.classList.add('rainbow');
-            audio.autoplay = true;
+            audio.loop = true;
             document.body.appendChild(audio);
             audio.play();
         } else {
