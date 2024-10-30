@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.getElementById("DMT");
     let pressCount = localStorage.getItem('pressCount') ? parseInt(localStorage.getItem('pressCount')) : 0;
     console.log(pressCount);
+    const audio = document.createElement("audio")
+    audio.src = "/assets/content/caramell.mp3";
 
     if (localStorage.getItem("theme") === "dark") {
         enableDarkMode();
@@ -46,21 +48,24 @@ document.addEventListener("DOMContentLoaded", () => {
     function enableRainbowMode() {
         if (pressCount <= 5) {
             document.body.classList.add('rainbow');
+            audio.autoplay = true;
+            document.body.appendChild(audio);
+            audio.play();
         } else {
             document.body.classList.remove('rainbow');
+            audio.remove();
             pressCount = 0;
             localStorage.setItem('pressCount', pressCount);
-
         }
     }
     function updateButtonText() {
         if(pressCount === 5){
-            toggleButton.textContent = "Disable Rainbow Mode";
+            toggleButton.textContent = "Desativar Modo Rainbow";
         } else {
             if (document.getElementById("dark-stylesheet")) {
-                toggleButton.textContent = "Disable Dark Mode";
+                toggleButton.textContent = "Desativar Modo Escuro";
             } else {
-                toggleButton.textContent = "Enable Dark Mode";
+                toggleButton.textContent = "Ativar Modo Escuro";
             }
         }
     }
