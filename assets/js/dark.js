@@ -1,14 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.getElementById("DMT");
     let pressCount = localStorage.getItem('pressCount') ? parseInt(localStorage.getItem('pressCount')) : 0;
-    console.log(pressCount);
+    const audio = document.createElement("audio")
+    const time = localStorage.getItem('audioTime')
+    audio.src = "/assets/content/caramell.mp3";
+
+    console.log("Saved presses: " + pressCount);
 
     if (localStorage.getItem("theme") === "dark") {
         enableDarkMode();
     }
 
+    enableRainbowMode();
+
+    if (time) {
+        audio.currentTime = parseFloat(time);
+    }
+
     toggleButton.addEventListener("click", () => {
         pressCount++;
+
+        console.log("Pressed: " + pressCount);
 
         localStorage.setItem('pressCount', pressCount);
 
@@ -23,10 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         updateButtonText();
     });
-
-    if(pressCount >= 5) {
-        enableRainbowMode();
-    }
 
     function enableDarkMode() {
         const darkModeLink = document.createElement("link");
@@ -44,24 +52,34 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("theme", "light");
         }
     function enableRainbowMode() {
-        if (pressCount <= 5) {
+        if (pressCount === 5) {
             document.body.classList.add('rainbow');
+            audio.loop = true;
+            document.body.appendChild(audio);
+            audio.play();
+            updateButtonText();
         } else {
             document.body.classList.remove('rainbow');
+            audio.remove();
             pressCount = 0;
             localStorage.setItem('pressCount', pressCount);
-
         }
     }
     function updateButtonText() {
         if(pressCount === 5){
-            toggleButton.textContent = "Disable Rainbow Mode";
+            toggleButton.textContent = "Desativar Modo Rainbow";
         } else {
             if (document.getElementById("dark-stylesheet")) {
-                toggleButton.textContent = "Disable Dark Mode";
+                toggleButton.textContent = "Desativar Modo Escuro";
             } else {
-                toggleButton.textContent = "Enable Dark Mode";
+                toggleButton.textContent = "Ativar Modo Escuro";
             }
         }
     }
+    window.addEventListener('beforeunload', () => {
+        if (audio) {
+            audio.pause();
+            localStorage.setItem('audioTime', audio.currentTime);
+        }
+    });
 });
