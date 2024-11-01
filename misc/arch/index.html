@@ -8,35 +8,40 @@
     <script src="/assets/js/dark.js"></script>
 </head>
 <body>
+    <hr />
     <div>
-        <hr />
         <a href="/">Ir para a página principal</a><br />
         <a href="..">Voltar para Miscellaneous</a><br />
         <button id="DMT">Ativar Modo Escuro</button><br />
-        <hr />
     </div>
+
+    <hr />
 
     <div>
         <h1>Arch Linux Installation Guide</h1>
-        <h2>DISCLAIMER</h2><hr />
+        <h2>DISCLAIMER</h2>
+        <hr />
         <p>This guide was made to be used in an Oracle VM Virtual Box. Do <strong class="attention">NOT</strong> use it in a live system as unexpected results may occur.</p>
         <p><strong class="attention">You have been warned!</strong></p>
     </div>
 
     <div>
-        <h2>CLI Shortcuts</h2><hr />
+        <h2>CLI Shortcuts</h2>
+        <hr />
         <p><span class="command">TAB</span> (Auto-complete commands)</p>
         <p><span class="command">CTRL + L</span> (Clear the terminal screen)</p>
     </div>
 
     <div>
-        <h2>In case you get locked out of your login</h2><hr />
+        <h2>In case you get locked out of your login</h2>
+        <hr />
         <p>Enter as root and run</p>
         <p><span class="command">faillock --user [username here] --reset</span> (Resets the password attempts and the 10-min cooldown)</p>
     </div>
 
     <div>
-        <h2>In case you change the hardware of the machine (vm exports included)</h2><hr />
+        <h2>In case you change the hardware of the machine (vm exports included)</h2>
+        <hr />
         <p>Boot to a live GNU/Linux distribution, mount your file system and generate a new fstab: </p>
         <p>Mount your file system</p>
         <p><span class="command">mount /dev/[disk]</span></p>
@@ -52,18 +57,21 @@
     </div>
 
     <div>
-        <h2>Keyboard Layout</h2><hr />
+        <h2>Keyboard Layout</h2>
+        <hr />
         <p><span class="command">localectl list-keymaps</span> (List available keyboard layouts)</p>
         <p><span class="command">loadkeys [keymap]</span> (Load a specific keyboard layout)</p>
     </div>
 
     <div>
-        <h2>Network Configuration</h2><hr />
+        <h2>Network Configuration</h2>
+        <hr />
         <p><em>Wireless setup to be developed; Ethernet automatically connects.</em></p>
     </div>
 
     <div>
-    <h2>Time and Date Configuration</h2><hr />
+    <h2>Time and Date Configuration</h2>
+        <hr />
         <p><span class="command">timedatectl</span> (View current time and date settings)</p>
         <p><span class="command">timedatectl set-ntp true</span> (Enable network time synchronization)</p>
         <p><span class="command">timedatectl list-timezones</span> (List all timezones)</p>
@@ -71,7 +79,8 @@
     </div>
 
     <div>
-        <h2>Partitioning the Disk</h2><hr />
+        <h2>Partitioning the Disk</h2>
+        <hr />
         <p><span class="command">lsblk</span> (List system blocks currently available)</p>
         <p><span class="command">cfdisk /dev/[disk]</span> (Disk partitioning tool)</p>
         <p>Partition setup:</p>
@@ -97,7 +106,8 @@ Free space 59G</pre>
     </div>
 
     <div>
-    <h2>Formatting the Partitions</h2><hr />
+    <h2>Formatting the Partitions</h2>
+        <hr />
         <p><span class="command">mkfs.fat -F32 /dev/[disk]1</span> (Format Boot partition as FAT32)</p>
         <p><span class="command">mkfs.ext4 /dev/[disk]3</span> (Format Root partition as ext4)</p>
         <p><span class="command">mkswap /dev/[disk]2</span> (Format Swap partition)</p>
@@ -105,7 +115,8 @@ Free space 59G</pre>
     </div>
 
     <div>
-    <h2>Installation</h2><hr />
+    <h2>Installation</h2>
+        <hr />
         <p><span class="command">mount /dev/[disk]3 /mnt</span> (Mount Root partition to <code>/mnt</code>)</p>
         <p><span class="command">mkdir /mnt/boot</span> (Create Boot directory)</p>
         <p><span class="command">mount /dev/[disk]1 /mnt/boot</span> (Mount Boot partition to <code>/mnt/boot</code>)</p>
@@ -114,7 +125,8 @@ Free space 59G</pre>
     </div>
 
     <div>
-        <h2>Post-Install Configuration</h2><hr />
+        <h2>Post-Install Configuration</h2>
+        <hr />
         <p><span class="command">arch-chroot /mnt</span> (Chroot into the new system)</p>
         <strong class="attention">Set Timezone:</strong>
         <p><span class="command">ln -sf /usr/share/zoneinfo/[Your/Timezone] /etc/localtime</span></p>
@@ -153,7 +165,8 @@ Free space 59G</pre>
     </div>
 
     <div>
-        <h2>Post-Reboot Setup</h2><hr />
+        <h2>Post-Reboot Setup</h2>
+        <hr />
         <strong class="attention">Install Desktop Environment and Applications:</strong>
         <p><span class="command">sudo pacman -S plasma sddm xterm firefox git htop clang jdk-openjdk python intellij-idea-community-edition pycharm-community-edition vlc gimp libreoffice-fresh wireshark-qt neofetch mtr netcat dolphin pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack wireplumber rtkit openssh sl cmatrix nyancat bash-completion gnome-mines aisleriot</span></p>
         <p><span class="command">ENTER</span> till start</p>
@@ -199,7 +212,8 @@ Session=plasma</pre>
 
         <p><span class="command">reboot</span></p>
         <p><span class="command">sudo systemctl start sddm</span></p>
-        <hr />
+
     </div>
+    <hr />
 </body>
 </html>
