@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.getElementById("DMT");
     let pressCount = localStorage.getItem('pressCount') ? parseInt(localStorage.getItem('pressCount')) : 0;
-    const audio = document.createElement("audio")
-    const time = localStorage.getItem('audioTime')
+    const audio = document.createElement("audio");
+    let time = localStorage.getItem('audioTime');
     audio.src = "/assets/content/caramell.mp3";
 
     console.log("Saved presses: " + pressCount);
@@ -13,12 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     enableRainbowMode();
 
-    if (time) {
-        audio.currentTime = parseFloat(time);
-    }
-
     toggleButton.addEventListener("click", () => {
         pressCount++;
+
+        time = localStorage.getItem('audioTime');
 
         console.log("Pressed: " + pressCount);
 
@@ -55,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (pressCount === 5) {
             document.body.classList.add('rainbow');
             audio.loop = true;
+            audio.currentTime = localStorage.getItem('audioTime');
             document.body.appendChild(audio);
             audio.play();
             updateButtonText();
@@ -63,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
             audio.remove();
             pressCount = 0;
             localStorage.setItem('pressCount', pressCount);
+            console.log('Audio set to 0');
+            localStorage.setItem('audioTime', 0);
         }
     }
     function updateButtonText() {
